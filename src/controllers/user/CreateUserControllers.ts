@@ -1,9 +1,9 @@
-import {Request, response, Response} from 'express'
+import {NextFunction, Request, response, Response} from 'express'
 
 import { CreateUserServicis } from '../../servecis/user/CreateUserServecis'
 
 class CreatedUserControllers{
-    async handle(req: Request, res:Response){
+    async handle(req: Request, res:Response, next:NextFunction):Promise<Response>{
         const {nome, email, password} = req.body
 
         const createUserServicis = new CreateUserServicis()

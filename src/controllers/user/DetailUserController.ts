@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { DetailUserServices } from "../../servecis/user/DetailUserServices";
 
 class DetailUserController{
-    async handle(req:Request, res:Response){
+    async handle(req:Request, res:Response, next:NextFunction):Promise<Response>{
         const user_id = req.user_id
        
 

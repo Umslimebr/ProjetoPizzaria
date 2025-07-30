@@ -1,8 +1,8 @@
-import {Request, Response} from 'express';
+import {NextFunction, Request, Response} from 'express';
 import { CreateProductService } from '../../servecis/product/CreateProductService';
 
 class CreateProdutController{
-    async handle(req: Request, res:Response){
+    async handle(req: Request, res:Response, next:NextFunction):Promise<Response>{
         const {nome,price,description,category_id} = req.body;
 
 
@@ -11,14 +11,14 @@ class CreateProdutController{
         if(!req.file){
             throw new Error("Error upload file")
         }else{
-            const {originalname, filename} = req.file;
-            console.log(filename)
+            const {originalname, filename: banner} = req.file;
+
 
             const product = await creaProductService.execute({
             nome,
             price,
             description,
-            banner:'',
+            banner,
             category_id
         }) ;
 

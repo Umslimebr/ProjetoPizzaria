@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { CreateCategoryService } from "../../servecis/category/CreateCategoryService";
 
 class CreateCategoryController{
-    async handle(req:Request, res:Response){
+    async handle(req:Request, res:Response, next:NextFunction):Promise<Response>{
         const { nome } = req.body;
 
         const createCategoryService = new CreateCategoryService();
